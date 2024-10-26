@@ -1,28 +1,29 @@
 #include <stdio.h>
 
-int fact(int k){
-int fac=1;
-for(int j=1;j<=k;j++){
-fac*=j;
-}
-int ans=fac/k;
-return (ans);
+
+unsigned long long factorial(int n) {
+    if (n < 0) {
+        printf("Factorial is not defined for negative numbers.\n");
+        return 0;
+    }
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
 }
 
-int sum(int n){
-int add=0;
-for(int i=1;i<=n;i++){
-int num= fact(i);
-add+=num;
-}
-return (add);
+int main() {
+    int number;
+   
+    printf("Enter a positive integer: ");
+    scanf("%d", &number);
+   
+    unsigned long long result = factorial(number);
+ 
+    if (number >= 0) {
+        printf("Factorial of %d = %llu\n", number, result);
+    }
+
+    return 0;
 }
 
-int main(){
-printf("Write your number till which you want \n");
-int n;
-scanf("%d",&n);
-int ans=sum(n);
-printf("The ans is %d",ans);
-return 0;
-}
